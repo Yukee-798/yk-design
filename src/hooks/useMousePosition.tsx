@@ -7,7 +7,7 @@ const useMousePosition = () => {
             setPosition({ x: e.clientX, y: e.clientY });
         });
     }, []);
-    return [position, setPosition];
+    return position;
 }
 
 export default useMousePosition;
