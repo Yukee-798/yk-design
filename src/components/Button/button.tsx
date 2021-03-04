@@ -14,26 +14,38 @@ export enum ButtonSize {
     Small = 'sm',
     Normal = 'nor'
 }
+type AnchorButtonProps = React.AnchorHTMLAttributes<HTMLElement>;
+
+
+type NativeButtonProps = React.ButtonHTMLAttributes<HTMLElement>;
 
 interface BaseButtonProps {
     className?: string;
     disabled?: boolean;
     size?: ButtonSize;
     href?: string;
-    type?: ButtonType;
+    type?: 'primary' | 'default' | 'danger' | 'link' | 'submit' | 'reset' | 'button' | undefined;
     children?: React.ReactNode;
 }
 
-// interface OtherProps
+export type ButtonProps = Partial<BaseButtonProps & NativeButtonProps & AnchorButtonProps>;
 
-const Button: React.FC<BaseButtonProps> = (props) => {
+
+// 我自己封装的 Button 的 props 接口里面的 type 属性和原生 button 标签里的 props 接口属性 type 冲突了
+// 原生接口中的 type?: 'submit' | 'reset' | 'button
+// 我自己封装的接口的 type:? 'primary' | 'default' | 'danger' | 'link'
+// 希望的 type:? 'submit' | 'reset' | 'button | 'primary' | 'default' | 'danger' | 'link'
+// 实际操作后的 type:? undefined
+
+const Button: React.FC<ButtonProps> = (props) => {
     const {
         type,
         disabled,
         size,
         href,
         className,
-        children
+        children,
+        ...restProps
     } = props;
 
     const classes = classNames('yk-btn', {
@@ -50,6 +62,7 @@ const Button: React.FC<BaseButtonProps> = (props) => {
             <a 
                 className={classes} 
                 href={href}
+                {...restProps}
             >
                 {children}
             </a>
@@ -60,6 +73,7 @@ const Button: React.FC<BaseButtonProps> = (props) => {
                 className={classes}
                 disabled={disabled}
                 type='button'
+                {...restProps}
             >
                 {children}
             </button>
@@ -70,7 +84,7 @@ const Button: React.FC<BaseButtonProps> = (props) => {
 
 Button.defaultProps = {
     disabled: false,
-    type: ButtonType.Default,
+    type: 'default',
     size: ButtonSize.Normal,
     children: 'button'
 }

@@ -33,7 +33,7 @@
             text-decoration: none;
             color: $body-color;
             box-shadow: none;
-            
+
         }
     }
 
@@ -42,17 +42,26 @@
 
 // size: ButtonSize.Large
 .yk-btn-lg {
-    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+    @include button-size($btn-padding-y-lg,
+        $btn-padding-x-lg,
+        $btn-font-size-lg,
+        $btn-border-radius-lg);
 }
 
 // size: ButtonSize.Small
 .yk-btn-sm {
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+    @include button-size($btn-padding-y-sm,
+        $btn-padding-x-sm,
+        $btn-font-size-sm,
+        $btn-border-radius-sm);
 }
 
 // size: ButtonSize.Normal
 .yk-btn-nor {
-    @include button-size($btn-padding-y-nor, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+    @include button-size($btn-padding-y-nor,
+        $btn-padding-x-sm,
+        $btn-font-size-sm,
+        $btn-border-radius-sm);
 }
 
 
@@ -68,5 +77,26 @@
 
 // type: ButtonType.Default
 .yk-btn-default {
-    @include button-main-style($white, $gray-500, $black, $white, lighten($primary, 2.5%),lighten($primary, 2.5%), $white, darken($primary, 10%), darken($primary, 10%));
+    @include button-main-style($white, $gray-500, $black,
+        $white, lighten($primary, 2.5%), lighten($primary, 2.5%),
+        $white, darken($primary, 10%), darken($primary, 10%));
+}
+
+.yk-btn-link {
+    color: $btn-link-color;
+    font-weight: $font-weight-normal;
+    text-decoration: $link-decoration;
+    box-shadow: none;
+
+    &:hover {
+        color: lighten($btn-link-color, 10%);
+    }
+
+    &.disabled,
+    &:disabled {
+        color: $body-color;
+        // 用 js 实现
+        // pointer-events: none;
+        cursor: not-allowed;
+    }
 }
