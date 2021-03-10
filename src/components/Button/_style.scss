@@ -79,7 +79,7 @@
 .yk-btn-default {
     @include button-main-style($white, $gray-500, $black,
         $white, lighten($primary, 2.5%), lighten($primary, 2.5%),
-        $white, darken($primary, 10%), darken($primary, 10%));
+        $gray-200, darken($primary, 10%), darken($primary, 10%));
 }
 
 .yk-btn-link {
