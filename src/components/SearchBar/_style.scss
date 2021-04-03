@@ -1,0 +1,83 @@
+.yk-search-bar {
+    width: auto;
+    min-width: 200px;
+    max-width: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    .yk-search-bar-input {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: #f7f7f7;
+        border-radius: 20px;
+        margin-right: 10px;
+        transition: width .3s ease-in-out;
+
+        .yk-search-bar-placeholder-warp {
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: flex-grow .3s ease-in-out;
+
+            .yk-search-bar-placeholder {
+                display: flex;
+                align-items: center;
+                color: #999;
+                font-size: 14px;
+                font-weight: 300;
+                margin: 0 10px;
+
+                .placeholder-text {
+                    display: flex;
+                    align-items: center;
+                    height: 16px;
+                    padding-bottom: 4px;
+                }
+            }
+
+            input {
+                background-color: transparent;
+                position: absolute;
+                width: 70%;
+                height: 30px;
+                padding: 5px 30px 7px 30px;
+                outline: none;
+
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+
+                // 始终处于yk-search-bar的右上角
+                top: 0;
+                left: 0;
+
+                border: none;
+                cursor: pointer;
+                // &:hover {
+                //     transition: all .2s ease-in-out;
+                //     // background-color: #fff;
+                // }
+
+                &:focus {
+                    cursor: text;
+                }
+            }
+        }
+    }
+
+    button {
+        outline: none;
+        border-radius: 5px;
+        margin-right: -44px;
+        transition: opacity .3s;
+        background-color: #6190e8;
+        border: none;
+        color: white;
+        font-size: 14px;
+    }
+}
