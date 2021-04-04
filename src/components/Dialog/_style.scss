@@ -1,0 +1,75 @@
+.yk-dialog {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    // z-index: 1000;
+
+    .yk-dialog-mask {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background-color: rgba(0, 0, 0, .45);
+        // z-index: 1000;
+    }
+
+    .yk-dialog-window {
+        border-radius: 5px;
+        position: relative;
+        // margin: 20vh auto 0 auto;
+
+        
+        width: 450px;
+        min-height: 200px;
+        background-color: #fff;
+        z-index: 1000;
+
+        display: flex;
+        flex-direction: column;
+
+        box-shadow: 0 3px 6px -4px rgba(0, 0, 0, .12),
+            0 6px 16px 0 rgba(0, 0, 0, .08),
+            0 9px 28px 8px rgba(0, 0, 0, .05);
+
+        // transform: 
+        transition: transform .2s linear, top .2s ease-in-out, left .2s ease-in-out;
+        // transform: translate(50vw, 20vh);
+        
+
+
+
+        header {
+            padding: 5px 15px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .content {
+            font-size: 14px;
+            flex-grow: 5;
+            min-height: 100%;
+            padding: 20px 18px;
+
+            border: {
+                top: 1px solid #f0f0f0;
+                bottom: 1px solid #f0f0f0;
+            }
+        }
+
+        footer {
+            padding: 5px 15px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            button {
+                margin-right: 10px;
+            }
+
+        }
+    }
+}
