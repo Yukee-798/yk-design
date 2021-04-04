@@ -14,7 +14,7 @@
 
     border: $btn-border-width solid transparent;
 
-    @include button-size($btn-padding-x, $btn-padding-y, $btn-font-size, $btn-border-radius);
+    @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
     outline: none;
     box-shadow: $btn-box-shadow;
     cursor: pointer;

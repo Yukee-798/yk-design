@@ -2,18 +2,18 @@ import React from 'react';
 import classNames from 'classnames';
 
 
-export enum ButtonTypes {
-    Primary = 'primary',
-    Default = 'default',
-    Danger = 'danger',
-    Link = 'link'
-}
+// export enum ButtonTypes {
+//     Primary = 'primary',
+//     Default = 'default',
+//     Danger = 'danger',
+//     Link = 'link'
+// }
 
-export enum ButtonSizes {
-    Large = 'lg',
-    Small = 'sm',
-    Normal = 'nor'
-}
+// export enum ButtonSizes {
+//     Large = 'lg',
+//     Small = 'sm',
+//     Normal = 'nor'
+// }
 type AnchorButtonProps = React.AnchorHTMLAttributes<HTMLElement>;
 
 
@@ -22,9 +22,9 @@ type NativeButtonProps = React.ButtonHTMLAttributes<HTMLElement>;
 interface BaseButtonProps {
     className?: string;
     disabled?: boolean;
-    size?: ButtonSizes;
+    size?: 'large' | 'small' | 'normal';
     href?: string;
-    btnType?: ButtonTypes
+    btnType?: 'primary' | 'default' | 'danger' | 'link'
     children?: React.ReactNode;
 }
 
@@ -40,7 +40,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         href,
         className,
         children,
-        ...restProps
+        ...other
     } = props;
 
     const classes = classNames('yk-btn', {
@@ -52,12 +52,12 @@ const Button: React.FC<ButtonProps> = (props) => {
     });
 
     // btn-link
-    if (btnType === ButtonTypes.Link) {
+    if (btnType === 'link') {
         return (
             <a 
                 className={classes} 
                 href={href}
-                {...restProps}
+                {...other}
             >
                 {children}
             </a>
@@ -68,7 +68,7 @@ const Button: React.FC<ButtonProps> = (props) => {
                 className={classes}
                 disabled={disabled}
                 type='button'
-                {...restProps}
+                {...other}
             >
                 {children}
             </button>
@@ -79,8 +79,8 @@ const Button: React.FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
     disabled: false,
-    btnType: ButtonTypes.Default,
-    size: ButtonSizes.Normal,
+    btnType: 'default',
+    size: 'normal',
     children: 'button'
 }
 
