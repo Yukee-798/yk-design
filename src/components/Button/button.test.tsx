@@ -1,4 +1,3 @@
-import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import Button from './button'
 
@@ -12,7 +11,7 @@ describe('test Button component', () => {
 
         // 获取默认按钮对象，并将其渲染到页面中
         const warpper = render(<Button onClick={handleClick}>Nice</Button>);
-        const element = warpper.queryByText('Nice');
+        const element = warpper.getByText('Nice');
 
         // 判断页面中是否有这个元素对象
         expect(element).toBeInTheDocument();
@@ -22,6 +21,7 @@ describe('test Button component', () => {
 
         // 元素具有的类名
         expect(element).toHaveClass('yk-btn yk-btn-default yk-btn-normal')
+        expect(element.className).toBe('yk-btn yk-btn-default yk-btn-normal')
 
         // 模拟按钮点击
         fireEvent.click(element);
@@ -39,7 +39,7 @@ describe('test Button component', () => {
 
     it('should render a link when btnType equals link and href is provided', () => {
         const warpper = render(<Button type='link' href='https://www.baidu.com'>Link</Button>)
-        const element = warpper.queryByText('Link');
+        const element = warpper.getByText('Link');
         expect(element).toBeInTheDocument();
         expect(element.tagName).toBe('A')
         expect(element).toHaveClass('yk-btn yk-btn-link yk-btn-normal')
@@ -47,7 +47,7 @@ describe('test Button component', () => {
 
     it('should render disabled button when disabled set to true', () => {
         const warpper = render(<Button disabled onClick={handleClick}>Nice</Button>)
-        const element = warpper.queryByText('Nice');
+        const element = warpper.getByText('Nice');
 
         // 检测是否含有 disabled 类名
         expect(element).toHaveClass('disabled')
