@@ -27,12 +27,11 @@ const Button: React.FC<ButtonProps> = (props) => {
         ...other
     } = props;
 
-    const classes = classNames('yk-btn', {
+    const classes = classNames('yk-btn', className ,{
         // 如果传入的 props 中有 type 属性则会返回 'btn btn-primary(传入的 type)'
         [`yk-btn-${type}`]: type,
         [`yk-btn-${size}`]: size,
         'disabled': disabled,
-        [`${className}`]: className
     });
 
     // btn-link
