@@ -3,6 +3,8 @@ import classNames from 'classnames'
 import { MenuContext } from './menu'
 import { BaseProps } from '..';
 import { MenuItemProps } from './menuItem';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import Icon from '../Icon/icon';
 
 export interface SubMenuProps extends BaseProps {
     /** 标题 */
@@ -80,7 +82,13 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
                 className='submenu-title'
                 {...clickEvents}
             >
-                {title}
+                <span className='submenu-title-text'>{title}</span>
+                {
+                    contextValue.mode === 'vertical' &&
+                    <span className='submenu-title-arrow'>
+                        <Icon icon={faAngleDown} />
+                    </span>
+                }
             </div>
 
             <ul className='yk-submenu'>

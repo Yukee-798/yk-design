@@ -46,7 +46,8 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
             onClick={handleClick}
             {...restProps}
         >
-            {children}
+            {icon && <span className='menu-item-icon'>{icon}</span>}
+            <span className='menu-item-title'>{children}</span>
         </li>
     )
 }

@@ -12,11 +12,17 @@
         text-align: center;
         cursor: pointer;
         user-select: none;
-
-        flex-grow: 1;
+        min-width: 100px;
 
         border-bottom: 2px solid transparent;
         transition: $menu-transition;
+        position: relative;
+
+        .menu-item-icon {
+            position: relative;
+            left: 0px;
+            margin-right: 10px;
+        }
 
         &:hover,
         &.selected {
@@ -36,6 +42,11 @@
     .submenu-item {
         position: relative;
 
+        .submenu-title-arrow {
+            position: absolute;
+            right: 20px;
+        }
+
         .yk-submenu {
             display: none;
             position: absolute;
@@ -49,6 +60,7 @@
             .menu-item {
                 border: none;
                 background: transparent;
+                margin: 0;
 
                 &:hover {
                     border-bottom: none;
@@ -95,9 +107,11 @@
         }
 
         .submenu-item {
-            flex-grow: 0;
+            // flex-grow: 0;
             border-right: 1px solid transparent;
             padding-left: 0;
+
+
 
             .submenu-title {
                 padding-left: 20px;
