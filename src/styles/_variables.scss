@@ -31,6 +31,18 @@ $danger: $red !default;
 $light: $gray-100 !default;
 $dark: $gray-800 !default;
 
+// 主题色映射表
+$theme-colors:(
+  'prmiary': $primary,
+  'secondary': $light-blue,
+  'success': $success,
+  'info': $info,
+  'warning': $warning,
+  'danger': $danger,
+  'light': $light,
+  'dark': $dark
+);
+
 
 // 字体族
 $font-family-sans-serif: -apple-system,
