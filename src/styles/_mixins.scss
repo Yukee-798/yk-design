@@ -1,11 +1,40 @@
+// animation
+@mixin zoom-animation($direction: 'top',
+    $scaleStart: scaleY(0),
+    $scaleEnd: scaleY(1),
+    $origin: center top,
+) {
+    .zoom-from-#{$direction}-enter {
+        opacity: 0;
+        transform: $scaleStart;
+    }
+
+    .zoom-from-#{$direction}-enter-active {
+        opacity: 1;
+        transform: $scaleEnd;
+        transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+        transform-origin: $origin
+    }
+
+    .zoom-from-#{$direction}-exit {
+        opacity: 1;
+    }
+
+    .zoom-from-#{$direction}-exit-active {
+        opacity: 0;
+        transform: $scaleStart;
+        transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+        transform-origin: $origin;
+    }
+}
+
 @mixin button-size($padding-y, $padding-x, $font-size, $border-raduis) {
     padding: $padding-y $padding-x;
     font-size: $font-size;
     border-radius: $border-raduis;
 }
 
-@mixin button-main-style(
-    $background,
+@mixin button-main-style($background,
     $border,
     $color,
 
@@ -23,8 +52,7 @@
 
     $visited-background: $background,
     $visited-border: $border,
-    $visited-color: $color
-) {
+    $visited-color: $color) {
     background: $background;
     border-color: $border;
     color: $color;
