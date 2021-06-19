@@ -128,4 +128,7 @@ describe('test Menu component', () => {
         menuEle = warpper.getByTestId('test-menu-vertical');
         expect(menuEle).toHaveClass('menu-vertical')
     })
+
+    /** 测试 SubMenu */
+    
 })

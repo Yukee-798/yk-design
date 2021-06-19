@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
 import classNames from 'classnames'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { MenuContext } from './menu'
 import { BaseProps } from '..';
 import { MenuItemProps } from './menuItem';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import Transition from '../Transition/transition';
 import Icon from '../Icon/icon';
 
 export interface SubMenuProps extends BaseProps {
@@ -91,10 +92,20 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
                 }
             </div>
 
-            <ul className='yk-submenu'>
-                {renderChildren()}
-            </ul>
-
+            {/* 添加从上方缩放的动画 */}
+            <Transition
+                in={isUnfold}
+                timeout={200}
+                animation='zoom-from-top'
+                appear
+                unmountOnExit
+            >
+                <div className='submenu-warp'>
+                    <ul className='yk-submenu'>
+                        {renderChildren()}
+                    </ul>
+                </div>
+            </Transition>
         </li>
     )
 }

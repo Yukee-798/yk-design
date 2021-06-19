@@ -10,7 +10,6 @@ export interface MenuItemProps extends BaseProps {
     icon?: React.ReactNode
     /** 是否禁用 */
     disabled?: boolean;
-
 }
 
 const MenuItem: React.FC<MenuItemProps> = (props) => {
@@ -36,7 +35,6 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
     const handleClick = () => {
         if (!disabled) {
             contextValue.onSelect?.(itemKey as string)
-            // console.log(itemKey);
         }
     }
     return (

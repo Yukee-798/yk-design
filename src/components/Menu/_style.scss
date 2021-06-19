@@ -43,37 +43,44 @@
         position: relative;
 
         .submenu-title-arrow {
+            transform: rotate3d(1, 0, 0, 0deg);
+            transition: transform .5s;
             position: absolute;
             right: 20px;
         }
 
-        .yk-submenu {
-            display: none;
+        .submenu-warp {
             position: absolute;
             width: 100%;
-            list-style: none;
-            padding: 0;
-            color: black;
-            box-shadow: $submenu-box-shadow;
-            // margin-top: 2px;
 
-            .menu-item {
-                border: none;
-                background: transparent;
-                margin: 0;
+            .yk-submenu {
+                width: 100%;
+                list-style: none;
+                padding: 0;
+                color: black;
+                box-shadow: $submenu-box-shadow;
+                margin-top: 10px;
 
-                &:hover {
-                    border-bottom: none;
-                }
+                .menu-item {
+                    border: none;
+                    background: transparent;
+                    margin: 0;
 
-                &.selected {
-                    border-bottom: none;
-                    color: $menu-hover-color;
-                    transition: $menu-transition;
-                    background: $light-blue;
+                    &:hover {
+                        border-bottom: none;
+                    }
+
+                    &.selected {
+                        border-bottom: none;
+                        color: $menu-hover-color;
+                        transition: $menu-transition;
+                        background: $light-blue;
+                    }
                 }
             }
         }
+
+
     }
 
     &.menu-vertical {
@@ -107,23 +114,18 @@
         }
 
         .submenu-item {
-            // flex-grow: 0;
-            border-right: 1px solid transparent;
+            border-right: 0px solid transparent;
             padding-left: 0;
-
-
 
             .submenu-title {
                 padding-left: 20px;
             }
 
-            &.selected {
-                background: none;
-                border-right: 1px solid transparent;
+            .submenu-warp {
+                position: static;
             }
 
             .yk-submenu {
-                position: static;
                 margin-top: 0;
                 width: 100%;
                 list-style: none;
@@ -131,8 +133,6 @@
                 color: black;
                 box-shadow: none;
                 background-color: #fafafa;
-                // padding-left: 20px;
-
 
                 .menu-item {
                     border: none;
@@ -144,6 +144,7 @@
 
                     &.selected {
                         border-bottom: none;
+                        border-right: 3px solid $menu-hover-color;
                         color: $menu-hover-color;
                         transition: $menu-transition;
                         background: $light-blue;
@@ -155,8 +156,8 @@
 
     // 控制submenu是否展开
     .unfold {
-        .yk-submenu {
-            display: block;
+        .submenu-title-arrow {
+            transform: rotate3d(1, 0, 0, 180deg);
         }
     }
 }
