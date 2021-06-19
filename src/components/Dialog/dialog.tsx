@@ -60,6 +60,14 @@ const Dialog: React.FC<IPopWindowProps> = (props) => {
         }
     }, [])
 
+
+    /**
+     * 需求：当 isPop 变为 true 的时候，此时 鼠标所在的位置就是弹窗的起点，然后弹窗过渡：由小变大、由起点到水平居中
+     * 问题：目前尝试了使用 translate 发现坐标会被 scale 影响，scale(1) 的时候正常随着鼠标动，但是 scale(.1) 就没预期效果了
+     * 待尝试：使用 相对定位 left 和 top
+     * 
+     */
+
     return (
         <div className='yk-dialog' style={isPop ? {} : { zIndex: -1000 }}>
             <div className='yk-dialog-mask' style={isPop ? {} : { display: 'none' }}></div>
@@ -71,13 +79,13 @@ const Dialog: React.FC<IPopWindowProps> = (props) => {
                 <div className='content'>{children}</div>
                 <footer>
                     <Button
-                        btnType={'default'}
+                        type={'default'}
                         onClick={() => {
                             onCancel?.();
                         }}
                     >{cancelText}</Button>
                     <Button
-                        btnType='primary'
+                        type='primary'
                         onClick={() => {
                             onConfirm?.();
                         }}
